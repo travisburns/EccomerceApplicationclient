@@ -2,13 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.scss'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
+import {Home, Category, Cart} from "./pages/index"
+import Navbar from "./components/Navbar/Navbar"
+import Footer from "./components/Footer/Footer"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
+    <div className='App'>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path = "/" element = {<Home />} />
+        <Route path = "/category/:id" element = {<Category />} />
+        <Route path = "/cart" element = {<Cart />} />   
+      </Routes>
+      <Footer />
+    </BrowserRouter> 
+    </div>
+       
        
     </>
   )
