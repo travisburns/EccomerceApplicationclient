@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Navbar.scss";
 import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
@@ -52,9 +52,14 @@ const Navbar = () => {
                         onClick={() => setIsSidebarOpen(false)}>
                         <i className='fas fa-times'></i>
                     </button>
-                    <li>
-                        <Link to= "/" className='nav-link text-white'>Demos</Link>
-                    </li>
+                    {
+                        categories.map(category => (
+                            <li key = {category.id}>
+                                <Link to = '/' className='nav-link text-white'>{category.name}</Link>
+                            </li>
+                        ))
+                    }
+                  
                 </ul>
                 <button type ="button" className='navbar-show-btn text-gold'
                 onClick={() => setIsSidebarOpen(true)}>
