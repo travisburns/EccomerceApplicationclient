@@ -1,9 +1,20 @@
 import React, {useState} from 'react'
 import "./Navbar.scss";
 import { Link } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux'
+import {fetchCategories} from '../../store/categorySlice';
+
+
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const {data: categories} = useSelector((state) => state.category);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+    useEffect(() => {
+        dispatch(fetchCategories())
+    }, [])
 
   return (
     <nav className='navbar'>
