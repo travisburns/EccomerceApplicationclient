@@ -3,6 +3,7 @@ import Slider from '../../components/Slider/Slider.jsx'
 import "./HomePage.scss"
 import Category from '../../components/Category/Category.jsx'
 import ProductList from "../../components/ProductList/ProductList.jsx"
+import SingleCategory from "../../components/SingleCategory/SingleCategory.jsx"
 import {useSelector, useDispatch} from 'react-redux';
 import { fetchCategories, fetchProductsByCategory} from '../../store/categorySlice.jsx'
 
@@ -25,6 +26,21 @@ const HomePage = () => {
     <div className='home-page'>
       <Slider />
       <Category categories = {categories} status = {categoryStatus} />
+
+
+      {/* Cateogry one products */}
+        <section>
+          {
+            productsByCategory[0] && <SingleCategory products = {productsByCategory[0]} status = {catProductAllStatus} />
+          }
+        </section>
+      {/* Cateogry two products */}
+      <section>
+          {
+            productsByCategory[1] && <SingleCategory products = {productsByCategory[1]} status = {catProductAllStatus} />
+          }
+        </section>
+
     </div>
   )
 }
