@@ -24,7 +24,7 @@ export default productSlice.reducer;
 
 export const fetchProducts = () => {
     return async function fetchProductThunk(dispatch) {
-        dispatch(setStatus(STATUS.LOADING)) 
+        dispatch(setStatus(STATUS.LOADING)); 
             try {
                 const response = await fetch(`${BASE_URL}products`)
                 const data = await response.json();
